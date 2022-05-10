@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import ToyForm from "./ToyForm";
 import ToyContainer from "./ToyContainer";
-// import { useEffect } from "react/cjs/react.production.min";
+
 const API = 'http://localhost:3001/toys'
 
 
@@ -34,7 +34,7 @@ function App() {
       <div className="buttonContainer">
         <button onClick={handleClick}>Add a Toy</button>
       </div>
-      <ToyContainer toys={toys} />
+      <ToyContainer toys={toys} setAllToys={setAllToys} />
     </>
   );
 }
