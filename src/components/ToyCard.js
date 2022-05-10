@@ -2,19 +2,23 @@ import React from "react";
 
 function ToyCard({toy, onDeleteToy, onLikeClick}) {
 
-  function handleLikes(){
+  function handleLikes(e){
+    e.preventDefault()
+    const more = parseInt(e.target.previousElementSibling.innerText) +1;
+    console.log(more)
     fetch(`http://localhost:3001/toys/${toy.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-       likes: 10,
+       likes: more
       }),
     })
     .then((r) => r.json())
-    .then((updateLikes) => onLikeClick(updateLikes));
-  }
+    .then((updateLikes) => {
+      onLikeClick(e.target.previousElementSibling.innerText = `${more} Likes`)}
+      );}
 
   function handleDelete(){
     fetch(`http://localhost:3001/toys/${toy.id}`, {

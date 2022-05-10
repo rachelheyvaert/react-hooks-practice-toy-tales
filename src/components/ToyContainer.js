@@ -11,14 +11,14 @@ function ToyContainer({toys, setAllToys}) {
   function handleToyLikes(updatedLikes) {
     const newLikeCount = toys.map((toy)=> {
 if(toy.id === updatedLikes.id) {
-  toy.likes = (toy.likes + 1)
+  toy.likes = toy.like + 1
   return updatedLikes;
 } else {
   return toy;
 } })
 setAllToys([...toys, newLikeCount])
   }
-  
+
   return (
     <div id="toy-collection">{toys.map(toy=> <ToyCard onLikeClick={handleToyLikes} key={toy.id} toy={toy} onDeleteToy={handleDeleteToy} />)}</div>
   );
